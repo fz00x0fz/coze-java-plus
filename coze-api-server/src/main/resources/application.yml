@@ -1,0 +1,39 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/plain
+
+spring:
+  application:
+    name: coze-api-server
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+    default-property-inclusion: non_null
+
+coze:
+  apiKey: ${COZE_API_KEY:pat_xOZXIexZt2jVB1H8lirbL1YWLCXzzmcHl8aBfSjkqLIeuVKJntdKEtwIMTs2gyvU}
+  baseUrl: ${COZE_BASE_URL:https://api.coze.cn}
+  connectTimeout: ${COZE_CONNECT_TIMEOUT:10000}
+  readTimeout: ${COZE_READ_TIMEOUT:30000}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+  show-actuator: true
